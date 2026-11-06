@@ -142,14 +142,6 @@ StudioSpace uses Better Auth for user authentication and JWT-based token verific
 - `verifyAdmin.js` — Handles administrative access verification.
 - `verifyPermission.js` — Checks whether a user has permission to perform a specific operation.
 
-### User Roles
-
-| Role | Access |
-|---|---|
-| Admin | Full administrative access |
-| Sub-admin | Access to assigned permissions |
-| User | Standard user access |
-
 ## 🗄️ Database
 
 StudioSpace uses MongoDB as its primary database.
