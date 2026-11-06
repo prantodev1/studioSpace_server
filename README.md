@@ -179,5 +179,3 @@ The backend provides API services for the StudioSpace frontend.
 The goal of the StudioSpace backend is to provide a secure and scalable API infrastructure for studio discovery, studio management, and booking operations with authentication and role-based authorization.
 
 ---
-
-**Developed with ❤️ using Node.js, Express.js, and MongoDB.**
