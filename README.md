@@ -1,28 +1,59 @@
-# StudioSpace — Backend API
+# 🚀 StudioSpace — Backend API
 
-StudioSpace is a studio booking platform backend built with Node.js, Express.js, and MongoDB. It provides RESTful APIs for studio management, booking operations, authentication, and role-based access control.
+<p align="center">
+  A secure and scalable backend for a modern studio booking platform.
+</p>
 
-The backend handles client requests, manages database operations, verifies user authentication, and protects restricted resources through middleware.
+<p align="center">
+  <a href="https://studiospace-server-silk.vercel.app/">
+    <img src="https://img.shields.io/badge/Live_API-Visit_Server-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live API" />
+  </a>
+  <a href="https://studioclient.vercel.app/">
+    <img src="https://img.shields.io/badge/Frontend-Visit_App-2563EB?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Frontend" />
+  </a>
+</p>
 
-## 🌐 Live Backend
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Better_Auth-000000?style=flat-square" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white" />
+</p>
 
-**Backend API:** https://studiospace-server-silk.vercel.app/
+---
 
-**Frontend:** https://studioclient.vercel.app/
+## 📖 About The Project
+
+**StudioSpace** is a studio booking platform designed to simplify studio discovery, management, and booking operations.
+
+The backend is built with **Node.js, Express.js, and MongoDB**, providing a structured RESTful API architecture for managing application data, authenticating users, and controlling access to protected resources.
+
+It integrates **Better Auth JWT verification** with role-based access control (RBAC) to ensure secure and permission-based API operations.
+
+## 🌐 Live Application
+
+| Service | URL |
+|:---|:---|
+| **Frontend Application** | [studioclient.vercel.app](https://studioclient.vercel.app/) |
+| **Backend API** | [studiospace-server-silk.vercel.app](https://studiospace-server-silk.vercel.app/) |
+| **Backend Hosting** | Vercel |
+| **Database** | MongoDB Atlas |
 
 ## ✨ Key Features
 
-- **Studio Management:** Create, retrieve, update, and delete studio listings.
-- **Booking Management:** Handle studio booking operations.
-- **User Authentication:** Verify Better Auth JWT tokens.
-- **Admin Authorization:** Protect administrative routes.
-- **Role-Based Access Control (RBAC):** Manage permissions for Admin, Sub-admin, and regular User roles.
-- **Permission Middleware:** Restrict specific operations based on assigned permissions.
-- **MongoDB Integration:** Store and retrieve application data using MongoDB.
-- **RESTful API:** Provide structured API endpoints for the frontend application.
-- **Secure Configuration:** Manage environment variables and database credentials.
+- **Studio Management** — Create, retrieve, update, and delete studio listings.
+- **Booking Management** — Handle studio booking operations.
+- **User Authentication** — Verify Better Auth JWT tokens using JOSE.
+- **Admin Authorization** — Protect administrative routes from unauthorized access.
+- **Role-Based Access Control (RBAC)** — Manage access for Admin, Sub-admin, and User roles.
+- **Permission-Based Middleware** — Restrict specific operations according to assigned permissions.
+- **MongoDB Integration** — Efficiently store and retrieve application data.
+- **RESTful API Architecture** — Provide structured JSON-based API services.
+- **Secure Configuration** — Manage environment variables and sensitive credentials securely.
 
-## 🛠️ Technologies Used
+## 🛠️ Technology Stack
 
 ### Backend
 - Node.js
@@ -36,72 +67,18 @@ The backend handles client requests, manages database operations, verifies user 
 
 ### Authentication & Security
 - Better Auth
-- JWT
+- JSON Web Token (JWT)
 - JOSE
 - Cookie Parser
-- Role-Based Access Control (RBAC)
 - CORS
+- Role-Based Access Control (RBAC)
 
 ### Development Tools
+- npm
 - Nodemon
 - dotenv
-- npm
 
-## 📦 Installation & Setup
-
-Follow these steps to run the backend server locally.
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/prantodev1
-```
-
-### 2. Navigate to the Project Directory
-
-```bash
-cd studiospace-server
-```
-
-### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-### 4. Configure Environment Variables
-
-Create a `.env` file in the root directory.
-
-```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-BETTER_AUTH_URL=http://localhost:3000
-```
-
-Replace the placeholder values with your actual configuration.
-
-**Important:** Never upload your `.env` file or sensitive credentials to GitHub.
-
-### 5. Start the Development Server
-
-```bash
-npm run dev
-```
-
-The server will start at:
-
-```text
-http://localhost:5000
-```
-
-### 6. Start the Production Server
-
-```bash
-npm start
-```
-
-## 📁 Project Structure
+## 📂 Project Structure
 
 ```text
 studiospace-server/
@@ -132,42 +109,170 @@ studiospace-server/
 └── README.md
 ```
 
+## ⚙️ Installation & Setup
+
+Follow these steps to run the backend application locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/prantodev1/studioSpace_server.git
+```
+
+### 2. Navigate to the Project Directory
+
+```bash
+cd studioSpace_server
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the root directory and configure the following variables:
+
+```env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+BETTER_AUTH_URL=http://localhost:3000
+```
+
+Replace the placeholder values with your actual environment configuration.
+
+> **Security Note:** Never commit your `.env` file, database credentials, or authentication secrets to a public repository.
+
+### 5. Start the Development Server
+
+```bash
+npm run dev
+```
+
+### 6. Start the Production Server
+
+```bash
+npm start
+```
+
+The local backend server will run at:
+
+```text
+http://localhost:5000
+```
+
 ## 🔐 Authentication & Authorization
 
-StudioSpace uses Better Auth for user authentication and JWT-based token verification for protected backend APIs.
+StudioSpace implements authentication and authorization using Better Auth, JWT verification, and custom Express middleware.
 
-### Authentication Middleware
+### Authentication Flow
 
-- `verifyToken.js` — Verifies JWT tokens and identifies authenticated users.
-- `verifyAdmin.js` — Handles administrative access verification.
-- `verifyPermission.js` — Checks whether a user has permission to perform a specific operation.
+1. Users authenticate through Better Auth.
+2. The frontend provides the authentication JWT to protected API requests.
+3. The backend verifies the token using the verification middleware.
+4. The authenticated user's identity and role are used for access control.
+5. Permission middleware checks whether the requested operation is authorized.
 
-## 🗄️ Database
+### Middleware Overview
 
-StudioSpace uses MongoDB as its primary database.
+| Middleware | Responsibility |
+|:---|:---|
+| `verifyToken.js` | Verifies JWT tokens and authenticates users. |
+| `verifyAdmin.js` | Restricts access to administrative resources. |
+| `verifyPermission.js` | Validates user permissions for protected operations. |
 
-MongoDB Atlas provides cloud database hosting.
+### Supported User Roles
 
-The database stores application information, including:
+| Role | Access Level |
+|:---|:---|
+| Admin | Administrative operations |
+| Sub-admin | Permission-based administrative operations |
+| User | Standard application operations |
+
+## 🗄️ Database Architecture
+
+StudioSpace uses **MongoDB Atlas** as its cloud-hosted NoSQL database.
+
+The database manages the core application data, including:
 
 - User information
 - Studio listings
 - Booking information
 - Authentication-related data
 
+The database connection is managed through the configuration module:
+
+```text
+config/db.js
+```
+
 ## 🔌 API Integration
 
-The backend provides API services for the StudioSpace frontend.
+The backend communicates with the StudioSpace frontend through HTTP-based RESTful APIs.
 
-**Frontend Application:** Next.js
+| Component | Technology |
+|:---|:---|
+| Frontend | Next.js |
+| Backend | Node.js & Express.js |
+| Database | MongoDB |
+| Data Format | JSON |
+| Authentication | Better Auth & JWT |
+| Deployment | Vercel |
 
-**Backend API:** Express.js
+**Production API Base URL:**
 
-**Communication:** HTTP REST API with JSON data.
+```text
+https://studiospace-server-silk.vercel.app/
+```
 
+## ☁️ Deployment
 
-## 🎯 Project Goal
+The StudioSpace backend is deployed on **Vercel**.
 
-The goal of the StudioSpace backend is to provide a secure and scalable API infrastructure for studio discovery, studio management, and booking operations with authentication and role-based authorization.
+To deploy the latest production version using the Vercel CLI:
+
+```bash
+vercel --prod
+```
+
+Make sure all required environment variables are configured in:
+
+**Vercel Dashboard → Project Settings → Environment Variables**
+
+For production, configure the frontend authentication URL and CORS origins according to your deployment settings.
+
+## 🎯 Project Objective
+
+The primary objective of StudioSpace is to build a reliable and secure studio booking ecosystem where users can discover studios, manage listings, and handle booking operations efficiently.
+
+The backend provides the essential infrastructure through RESTful APIs, database integration, authentication, and role-based authorization.
 
 ---
+
+## 👨‍💻 Developer
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Developer-Pranto%20Paul-2563EB?style=for-the-badge" />
+</p>
+
+<p align="center">
+  Computer Science & Engineering Student | Full-Stack Developer
+</p>
+
+<p align="center">
+  <a href="https://github.com/prantodev1">
+    <img src="https://img.shields.io/badge/GitHub-prantodev1-181717?style=for-the-badge&logo=github" />
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <strong>StudioSpace</strong>
+  <br />
+  <i>Discover. Create. Book. Experience.</i>
+  <br /><br />
+  Built with ❤️ by <strong>Pranto Paul</strong>
+</p>
