@@ -13,23 +13,55 @@ if (dnsServers.length > 0) {
   dns.setServers(dnsServers);
 }
 
-const client = new MongoClient(process.env.MONGODB_URI);
-
+let client;
 let db;
+let connection;
+
+// Create the client lazily so a missing MONGODB_URI cannot crash the whole
+// serverless function at import time.
+const getClient = () => {
+  if (!process.env.MONGODB_URI) {
+    throw new Error(
+      "MONGODB_URI is not configured. Add it to your environment variables."
+    );
+  }
+
+  if (!client) {
+    client = new MongoClient(process.env.MONGODB_URI, {
+      serverSelectionTimeoutMS: 10000,
+    });
+  }
+
+  return client;
+};
 
 const connectDB = async () => {
-  try {
-    await client.connect();
-
-    db = client.db("studioSpaceDB");
-
-    console.log("MongoDB connected successfully!");
-
+  if (db) {
     return db;
-  } catch (error) {
-    console.error("MongoDB connection failed:", error.message);
-    throw error;
   }
+
+  if (!connection) {
+    connection = (async () => {
+      try {
+        await getClient().connect();
+
+        db = client.db("studioSpaceDB");
+
+        console.log("MongoDB connected successfully!");
+
+        return db;
+      } catch (error) {
+        // Allow the next request to retry the connection.
+        connection = undefined;
+        client = undefined;
+
+        console.error("MongoDB connection failed:", error.message);
+        throw error;
+      }
+    })();
+  }
+
+  return connection;
 };
 
 const getDB = () => {

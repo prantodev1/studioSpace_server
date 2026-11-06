@@ -36,14 +36,48 @@ app.use(
 app.use(express.json());
 app.use(cookieParser());
 
+// Server Health Check
+// These run before the database middleware so you can verify the function is
+// alive even when MongoDB is unreachable or not configured.
+app.get("/", (req, res) => {
+  res.send("StudioSpace Server is running!");
+});
+
+app.get("/api/health", (req, res) => {
+  res.json({ success: true, message: "StudioSpace Server is running!" });
+});
+
+// Connect to MongoDB before handling API routes
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
 // API Routes
 app.use("/api/studios", studioRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/bookings", bookingRoutes);
 
-// Server Health Check
-app.get("/", (req, res) => {
-  res.send("StudioSpace Server is running!");
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({
+    success: false,
+    message: `Route not found: ${req.method} ${req.originalUrl}`,
+  });
+});
+
+// Error handler
+app.use((error, req, res, next) => {
+  console.error("Request failed:", error.message);
+
+  res.status(500).json({
+    success: false,
+    message: error.message || "Internal server error",
+  });
 });
 
 const startServer = async () => {
